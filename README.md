@@ -21,5 +21,8 @@ There is also a `./build.sh` for convenience.
 4. `rijndael-128` is the same as AES-128, but `rijndael-256` is not the same as AES-256`.  AES was built from `rijndael-128`.
 5. When printing HEX text use unsigned char or else you'll get a bunch of `FFFFFF`'s :P
 
+## Resources
+https://gist.github.com/bricef/2436364 - Very nice example.
+http://www.cplusplusdevelop.com/6336_10264784/
 
 
