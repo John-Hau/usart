@@ -1,0 +1,385 @@
+"sku_16uio_lcd_rs485": {
+    "isIOuio": "1",
+    "isIObi": "0",
+    "isIObo": "0",
+    "isIOlcd": "1",
+    "isIOled": "0",
+    "i2c": [
+      {
+        "baud": "100000",
+        "pinConfig": "2",
+        "base": "0x403F8000",
+        "scl": {
+          "muxReg": "0x401F8118U",
+          "muxMode": "0x1U",
+          "inputReg": "0x401F84DCU",
+          "inputDaisy": "0x2U",
+          "configReg": "0x401F8308U"
+        },
+        "sda": {
+          "muxReg": "0x401F8114U",
+          "muxMode": "0x1U",
+          "inputReg": "0x401F84E0U",
+          "inputDaisy": "0x2U",
+          "configReg": "0x401F8304U"
+        }
+      }
+    ],
+    "ledchip": [
+      {
+        "enablePin": {
+          "base": "0x401B8000U",
+          "pin": 20,
+          "muxReg": "0x401F810CU",
+          "muxMode": "0x5U",
+          "inputReg": "0x0U",
+          "inputDaisy": "0x0U",
+          "configReg": "0x401F82FCU"
+        },
+        "Slaveaddr": "0x3C"
+      },
+      {
+        "enablePin": {
+          "base": "0x401C0000U",
+          "pin": 4,
+          "muxReg": "0x401F81E4U",
+          "muxMode": "0x5U",
+          "inputReg": "0x0U",
+          "inputDaisy": "0x0U",
+          "configReg": "0x401F83D4U"
+        },
+        "Slaveaddr": "0x3F"
+      }
+    ],
+    "spi": [
+      {
+        "baud": "6000000",
+        "base": "0x403A0000u",
+        "cpol": "0",
+        "cphase": "1",
+        "sck": {
+          "muxReg": "0x401F8148U",
+          "muxMode": "0x3U",
+          "inputReg": "0x401F8520U",
+          "inputDaisy": "0",
+          "configReg": "0x401F8338U"
+        },
+        "sdo": {
+          "muxReg": "0x401F8144U",
+          "muxMode": "0x3U",
+          "inputReg": "0x401F8528U",
+          "inputDaisy": "0",
+          "configReg": "0x401F8334U"
+        },
+        "sdi": {
+          "muxReg": "0x401F8140U",
+          "muxMode": "0x3U",
+          "inputReg": "0x401F8524U",
+          "inputDaisy": "0",
+          "configReg": "0x401F8330U"
+        },
+        "cs": [
+          {
+            "muxReg": "0x401F813CU",
+            "muxMode": "0x3U",
+            "inputReg": "0x401F851CU",
+            "inputDaisy": "0",
+            "configReg": "0x401F832CU"
+          },
+          {
+            "muxReg": "0x401F8188U",
+            "muxMode": "0x2U",
+            "inputReg": "0",
+            "inputDaisy": "0",
+            "configReg": "0x401F8378U"
+          },
+          {
+            "muxReg": "0x401F8184U",
+            "muxMode": "0x2U",
+            "inputReg": "0",
+            "inputDaisy": "0",
+            "configReg": "0x401F8374U"
+          },
+          {
+            "muxReg": "0x401F81A8U",
+            "muxMode": "0x6U",
+            "inputReg": "0",
+            "inputDaisy": "0",
+            "configReg": "0x401F8398U"
+          }
+        ]
+      },
+      {
+        "baud": "5000000",
+        "base": "0x4039C000u",
+        "cpol": "1",
+        "cphase": "1",
+        "sck": {
+          "muxReg": "0x401F80BCU",
+          "muxMode": "0x7U",
+          "inputReg": "0x401F8510U",
+          "inputDaisy": "0",
+          "configReg": "0x401F82ACU"
+        },
+        "sdo": {
+          "muxReg": "0x401F80C0U",
+          "muxMode": "0x7U",
+          "inputReg": "0x401F8518U",
+          "inputDaisy": "0",
+          "configReg": "0x401F82B0U"
+        },
+        "sdi": {
+          "muxReg": "0x401F80C4U",
+          "muxMode": "0x7U",
+          "inputReg": "0x401F8514U",
+          "inputDaisy": "0",
+          "configReg": "0x401F82B4U"
+        },
+        "cs": [
+          {
+            "muxReg": "0x401F80D0U",
+            "muxMode": "0x7U",
+            "inputReg": "0",
+            "inputDaisy": "0",
+            "configReg": "0x401F82C0U"
+          }
+        ]
+      }
+    ],
+    "uiochip": {
+      "spicfg": [
+        {
+          "spi": "0",
+          "cs": "0"
+        },
+        {
+          "spi": "0",
+          "cs": "1"
+        },
+        {
+          "spi": "0",
+          "cs": "2"
+        },
+        {
+          "spi": "0",
+          "cs": "3"
+        }
+      ],
+      "rstpin": [
+        {
+          "port": "0x401C0000u",
+          "pin": "17U",
+          "muxReg": "0x401F81D0U",
+          "muxMode": "0x5U",
+          "inputReg": "0",
+          "inputDaisy": "0",
+          "configReg": "0x401F83C0U"
+        },
+        {
+          "port": "0x401BC000u",
+          "pin": "31U",
+          "muxReg": "0x401F81B8U",
+          "muxMode": "0x5U",
+          "inputReg": "0",
+          "inputDaisy": "0",
+          "configReg": "0x401F83A8U"
+        },
+        {
+          "port": "0x401B8000u",
+          "pin": "11U",
+          "muxReg": "0x401F80E8U",
+          "muxMode": "0x5U",
+          "inputReg": "0",
+          "inputDaisy": "0",
+          "configReg": "0x401F82D8U"
+        },
+        {
+          "port": "0x401B8000u",
+          "pin": "24U",
+          "muxReg": "0x401F811CU",
+          "muxMode": "0x5U",
+          "inputReg": "0",
+          "inputDaisy": "0",
+          "configReg": "0x401F830CU"
+        }
+      ]
+    },
+    "uio": {
+      "pop": 255,
+      "cfg": [
+        {
+          "chip": 0,
+          "ch": 4
+        },
+        {
+          "chip": 0,
+          "ch": 3
+        },
+        {
+          "chip": 0,
+          "ch": 2
+        },
+        {
+          "chip": 0,
+          "ch": 1
+        },
+        {
+          "chip": 1,
+          "ch": 4
+        },
+        {
+          "chip": 1,
+          "ch": 3
+        },
+        {
+          "chip": 1,
+          "ch": 2
+        },
+        {
+          "chip": 1,
+          "ch": 1
+        },
+        {
+          "chip": 2,
+          "ch": 1
+        },
+        {
+          "chip": 2,
+          "ch": 2
+        },
+        {
+          "chip": 2,
+          "ch": 3
+        },
+        {
+          "chip": 2,
+          "ch": 4
+        },
+        {
+          "chip": 3,
+          "ch": 1
+        },
+        {
+          "chip": 3,
+          "ch": 2
+        },
+        {
+          "chip": 3,
+          "ch": 3
+        },
+        {
+          "chip": 3,
+          "ch": 4
+        }
+      ]
+    },
+	"lcdScr": {
+      "scrn_group": {
+        "numTotal": "16",
+        "origin_x": "0",
+        "origin_y": "0",
+        "line_num": "2",
+        "chPerLine": "8",
+        "imgxr": "19",
+        "imgyr": "27",
+        "imgxc": "11",
+        "imgyc": "27",
+        "chGapx": "2",
+        "chGapy": "2",
+        "lblToplx": "0",
+        "lblToply": "0",
+        "lblToplw": "22",
+        "lblToplh": "16",
+        "lblToprx": "19",
+        "lblTopry": "0",
+        "lblToprw": "14",
+        "lblToprh": "16",
+        "lblMidx": "0",
+        "lblMidy": "16",
+        "lblMidw": "33",
+        "lblMidh": "16",
+        "lblBtmx": "0",
+        "lblBtmy": "32",
+        "lblBtmw": "33",
+        "lblBtmh": "16",
+        "lblOutw": "33",
+        "lblOuth": "58",
+        "lblInx": "0",
+        "lblIny": "16",
+        "lblInw": "33",
+        "lblInh": "42"
+      }
+	},
+    "knob": {
+      "cfg": [
+        {
+          "port": "0x401C0000U",
+          "pin": 4,
+          "muxReg": "0x401F81E4U",
+          "muxMode": "0x5U",
+          "inputReg": 0,
+          "inputDaisy": 0,
+          "configReg": "0x401F83D4U"
+        },
+        {
+          "port": "0x401C0000U",
+          "pin": 2,
+          "muxReg": "0x401F81DCU",
+          "muxMode": "0x5U",
+          "inputReg": 0,
+          "inputDaisy": 0,
+          "configReg": "0x401F83CCU"
+        },
+        {
+          "port": "0x401C0000U",
+          "pin": 5,
+          "muxReg": "0x401F81E8U",
+          "muxMode": "0x5U",
+          "inputReg": 0,
+          "inputDaisy": 0,
+          "configReg": "0x401F83D8U"
+        },
+        {
+          "port": "0x400C0000U",
+          "pin": 0,
+          "muxReg": "0x400A8000U",
+          "muxMode": "0x5U",
+          "inputReg": 0,
+          "inputDaisy": 0,
+          "configReg": "0x400A8018U"
+        }
+      ],
+      "irqcfg": [
+        {
+          "irqtype": 88
+        },
+        {
+          "irqtype": 84
+        }
+      ]
+    },
+    "lcdchip": {
+      "rstpin": [
+        {
+          "muxReg": "0x401F80FCU",
+          "muxMode": "0x5U",
+          "inputReg": 0,
+          "inputDaisy": 0,
+          "configReg": "0x401F82ECU"
+        },
+        {
+          "muxReg": "0x401F80C8U",
+          "muxMode": "0x5U",
+          "inputReg": 0,
+          "inputDaisy": 0,
+          "configReg": "0x401F82B8U"
+        }
+      ],
+      "spicfg": [
+        {
+          "spi": "1",
+          "cs": "2"
+        }
+      ]
+    }
+  },

@@ -1,0 +1,132 @@
+"sku_16BI_led_rs485"
+
+ch0, GPIO2_PIN25 --- GPIO_IN_1,  GPIO_B1_09,    A13
+ch1, GPIO2_PIN24 --- GPIO_IN_2,  GPIO_B1_08,    A12
+ch2, GPIO3_PIN16 --- GPIO_IN_3,  GPIO_SD_B0_04, H2
+ch3, GPIO2_PIN30 --- GPIO_IN_4,  GPIO_B1_14,    C14
+ch4, GPIO3_PIN17 --- GPIO_IN_5,  GPIO_SD_B0_05, J2
+ch5, GPIO2_PIN31 --- GPIO_IN_6,  GPIO_B1_15,    B14
+ch6, GPIO1_PIN11 --- GPIO_IN_7,  GPIO_AD_B0_11, G10
+ch7, GPIO1_PIN24 --- GPIO_IN_8,  GPIO_AD_B1_08, H13
+ch8, GPIO1_PIN14 --- GPIO_IN_9,  GPIO_AD_B0_14, H14
+ch9, GPIO3_PIN26 --- GPIO_IN_10, GPIO_EMC_40,   A7
+
+ch10,GPIO3_PIN13 --- GPIO_IN_11  GPIO_B0_14,    E10, (GPIO2_PIN14)   #define IOMUXC_GPIO_B0_14_GPIO2_IO14 0x401F8174U, 0x5U, 0, 0, 0x401F8364U
+ch11,GPIO3_PIN12 --- GPIO_IN_12  GPIO_B0_12,    C10, (GPIO2_PIN12)   #define IOMUXC_GPIO_B0_12_GPIO2_IO12 0x401F816CU, 0x5U, 0, 0, 0x401F835CU
+ch12,GPIO3_PIN15 --- GPIO_IN_13  GPIO_B0_00,    D7,  (GPIO2_PIN0)    #define IOMUXC_GPIO_B0_00_GPIO2_IO00 0x401F813CU, 0x5U, 0, 0, 0x401F832CU
+ch13,GPIO3_PIN14 --- GPIO_IN_14  GPIO_B0_13,    D10, (GPIO2_PIN13)   #define IOMUXC_GPIO_B0_13_GPIO2_IO13 0x401F8170U, 0x5U, 0, 0, 0x401F8360U
+
+ch14,GPIO2_PIN18 --- GPIO_IN_15  GPIO_B1_02,    C11
+ch15,GPIO2_PIN27 --- GPIO_IN_16  GPIO_B1_11,    C13
+
+
+uint32_t muxRegister,
+uint32_t muxMode,
+uint32_t inputRegister,
+uint32_t inputDaisy,
+uint32_t 0x401BC000u
+
+#define GPIO1_BASE                               (0x401B8000u)
+#define GPIO2_BASE                               (0x401BC000u)
+#define GPIO3_BASE                               (0x401C0000u)
+#define GPIO4_BASE                               (0x401C4000u)
+#define GPIO5_BASE                               (0x400C0000u)
+
+
+
+      "irqcfg": [
+        {
+          "irqtype": 88 GPIO5_Combined_0_15_IRQn     
+        },
+        {
+          "irqtype": 80 GPIO1_Combined_0_15_IRQn     
+        },
+        {
+          "irqtype": 81 GPIO1_Combined_16_31_IRQn    
+        },
+        {
+          "irqtype": 83 GPIO2_Combined_16_31_IRQn    
+        },
+        {
+          "irqtype": 84 GPIO3_Combined_0_15_IRQn       // GPIO2_Combined_0_15_IRQn     
+        },
+        {
+          "irqtype": 85 GPIO3_Combined_16_31_IRQn    
+        }
+      ]
+
+  GPIO1_Combined_0_15_IRQn     = 80,               /**< Combined interrupt indication for GPIO1 signal 0 throughout 15 */
+  GPIO1_Combined_16_31_IRQn    = 81,               /**< Combined interrupt indication for GPIO1 signal 16 throughout 31 */
+  GPIO2_Combined_0_15_IRQn     = 82,               /**< Combined interrupt indication for GPIO2 signal 0 throughout 15 */
+  GPIO2_Combined_16_31_IRQn    = 83,               /**< Combined interrupt indication for GPIO2 signal 16 throughout 31 */
+  GPIO3_Combined_0_15_IRQn     = 84,               /**< Combined interrupt indication for GPIO3 signal 0 throughout 15 */
+  GPIO3_Combined_16_31_IRQn    = 85,               /**< Combined interrupt indication for GPIO3 signal 16 throughout 31 */
+  GPIO4_Combined_0_15_IRQn     = 86,               /**< Combined interrupt indication for GPIO4 signal 0 throughout 15 */
+  GPIO4_Combined_16_31_IRQn    = 87,               /**< Combined interrupt indication for GPIO4 signal 16 throughout 31 */
+  GPIO5_Combined_0_15_IRQn     = 88,               /**< Combined interrupt indication for GPIO5 signal 0 throughout 15 */
+  GPIO5_Combined_16_31_IRQn    = 89,               /**< Combined interrupt indication for GPIO5 signal 16 throughout 31 */
+
+
+
+
+
+
+//------------------------------------------------------------------
+ch6, GPIO1_PIN11 
+ch7, GPIO1_PIN24 
+ch8, GPIO1_PIN14 
+
+
+
+ch0, GPIO2_PIN25
+ch1, GPIO2_PIN24
+ch3, GPIO2_PIN30
+ch5, GPIO2_PIN31
+
+ch10,GPIO3_PIN13 --- GPIO_IN_11  GPIO_B0_14,     (GPIO2_PIN14)
+ch11,GPIO3_PIN12 --- GPIO_IN_12  GPIO_B0_12,     (GPIO2_PIN12)
+ch12,GPIO3_PIN15 --- GPIO_IN_13  GPIO_B0_00,     (GPIO2_PIN0)
+ch13,GPIO3_PIN14 --- GPIO_IN_14  GPIO_B0_13,     (GPIO2_PIN13)
+
+
+
+
+ch2, GPIO3_PIN16 --- GPIO_IN_3,  GPIO_SD_B0_04, H2
+ch4, GPIO3_PIN17 --- GPIO_IN_5,  GPIO_SD_B0_05, J2
+ch9, GPIO3_PIN26 --- GPIO_IN_10, GPIO_EMC_40,   A7
+
+
+
+
+
+
+
+//==============================================================================
+struct _bapi_io_portBiProperties _io_port_BiProperties[FSL_FEATURE_SOC_IGPIO_COUNT * 2] = {
+//const struct _bapi_io_portBiProperties _io_port_BiProperties[10] = {
+    {_io_biPropertiesPORT1_PIN_0_15, 0/*ARRAY_SIZE(_io_biPropertiesPORT1_PIN_0_15)*/}                       /**< No Binary Inputs on port 1 */
+  , {_io_biPropertiesPORT1_PIN_16_31, 0/*ARRAY_SIZE(_io_biPropertiesPORT1_PIN_16_31)*/}
+  , {_io_biPropertiesPORT2_PIN_0_15, 0/*ARRAY_SIZE(_io_biPropertiesPORT2_PIN_16_31)*/}
+  , {_io_biPropertiesPORT2_PIN_16_31, 0/*ARRAY_SIZE(_io_biPropertiesPORT2_PIN_16_31)*/}   /**< Binary Inputs on port 2    */
+  , {_io_biPropertiesPORT3_PIN_16_31, 0/*ARRAY_SIZE(_io_biPropertiesPORT3_PIN_16_31)*/}   /**< No Binary Inputs on port 3 */
+  , {0, 0}                        /**< No Binary Inputs on port 4 */
+  , {_io_biPropertiesPORT5, 0/*ARRAY_SIZE(_io_biPropertiesPORT5)*/}   /**< Binary Inputs on port 5    */
+#if 0
+  , {0, 0}                        /**< No Binary Inputs on port 6 */
+  , {0, 0}                       /**< No Binary Inputs on port 7 */
+  , {0, 0}                       /**< No Binary Inputs on port 8 */
+  , {0, 0}                       /**< No Binary Inputs on port 9 */
+#endif
+};
+
+
+
+
+
+
+
+
+
+
+
+
