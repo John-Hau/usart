@@ -37,22 +37,27 @@ int main()
   char * plaintext = "test"; // Needs to be padded to 16
 
   plaintext = pad_str(plaintext);
-  
-  char* IV = "0123456789abcdef"; // Needs to be 16
 
+  char* IV = "0123456789abcdef"; // Needs to be 16
   char *key = "fedcba9876543210"; // Needs to be padded to 16
   int keysize = 16; // 128 bits 
   char* buffer;
   int buffer_len = 16;
+
 
   buffer = calloc(1, buffer_len);
   strncpy(buffer, plaintext, buffer_len);
 
   MCRYPT td = mcrypt_module_open("rijndael-128", NULL, "cbc", NULL);
   int blocksize = mcrypt_enc_get_block_size(td);
+
+  printf("aes128 block size is %d\n",blocksize);
+
   if( buffer_len % blocksize != 0 ){return 1;}
 
   mcrypt_generic_init(td, key, keysize, IV);
+
+
   mcrypt_generic(td, buffer, buffer_len);  // Also mdecrypt_generic.
   mcrypt_generic_deinit (td);
   mcrypt_module_close(td);
