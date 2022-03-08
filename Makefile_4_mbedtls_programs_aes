@@ -1,0 +1,76 @@
+
+# To compile on SunOS: add "-lsocket -lnsl" to LDFLAGS
+
+CFLAGS	?= -O2
+WARNING_CFLAGS ?= -Wall -Wextra -Wformat=2 -Wno-format-nonliteral
+WARNING_CXXFLAGS ?= -Wall -Wextra -Wformat=2 -Wno-format-nonliteral
+LDFLAGS ?=
+
+
+LOCAL_CFLAGS = $(WARNING_CFLAGS)  -I../../include -D_FILE_OFFSET_BITS=64
+LOCAL_CXXFLAGS = $(WARNING_CXXFLAGS) -I../../include  -D_FILE_OFFSET_BITS=64
+LOCAL_LDFLAGS = ${MBEDTLS_TEST_OBJS} 		\
+		-L../../library 			\
+		-lmbedtls$(SHARED_SUFFIX)	\
+		-lmbedcrypto$(SHARED_SUFFIX)
+
+ifeq ($(shell uname -s),Linux)
+DLOPEN_LDFLAGS ?= -ldl
+else
+DLOPEN_LDFLAGS ?=
+endif
+
+
+ifndef SHARED
+MBEDLIBS=../../library/libmbedcrypto.a ../../library/libmbedx509.a ../../library/libmbedtls.a
+else
+MBEDLIBS=../../library/libmbedcrypto.$(DLEXT) ../../library/libmbedx509.$(DLEXT) ../../library/libmbedtls.$(DLEXT)
+endif
+DEP=${MBEDLIBS} ${MBEDTLS_TEST_OBJS}
+
+ifdef DEBUG
+LOCAL_CFLAGS += -g3
+endif
+
+# if we're running on Windows, build for Windows
+ifdef WINDOWS
+WINDOWS_BUILD=1
+endif
+
+ifdef WINDOWS_BUILD
+DLEXT=dll
+EXEXT=.exe
+LOCAL_LDFLAGS += -lws2_32
+ifdef SHARED
+SHARED_SUFFIX=.$(DLEXT)
+endif
+else
+DLEXT ?= so
+EXEXT=
+SHARED_SUFFIX=
+endif
+
+ifdef WINDOWS
+PYTHON ?= python
+else
+PYTHON ?= $(shell if type python3 >/dev/null 2>/dev/null; then echo python3; else echo python; fi)
+endif
+
+# Only build the dlopen test in shared library builds, and not when building
+# for Windows.
+ifdef BUILD_DLOPEN
+# Don't override the value
+else ifdef WINDOWS_BUILD
+BUILD_DLOPEN =
+else ifdef SHARED
+BUILD_DLOPEN = y
+else
+BUILD_DLOPEN =
+endif
+
+
+
+crypt_and_hash.exe: crypt_and_hash.c $(DEP)
+	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) crypt_and_hash.c $(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
+
+
