@@ -1,0 +1,11 @@
+
+SRC = $(filter-out test.c, $(wildcard *.c))
+CFLAGS += -std=c99 -Wall
+DEPS = $(wildcard deps/*/*.c)
+OBJS = $(DEPS:.c=.o)
+
+%.o: %.c
+	$(CC) $< -Ideps -c -o $@ $(CFLAGS)
+
+sha256.o: sha256.h sha256.c
+

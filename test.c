@@ -1,8 +1,9 @@
 
+#include <stdio.h>
 #include <assert.h>
 #include <string.h>
 #include "sha256.h"
-#include "tap.c/tap.h"
+//#include "tap.c/tap.h"
 
 // "hello"
 unsigned char hello_hashed[] = {
@@ -18,12 +19,54 @@ unsigned char empty_hashed[] = {
   0xa4, 0x95, 0x99, 0x1b, 0x78, 0x52, 0xb8, 0x55
 };
 
+
+
+
+char message[] =
+        "Be that word our sign of parting, bird or fiend! I shrieked upstarting"
+        "Get thee back into the tempest and the Nights Plutonian shore!"
+        "Leave no black plume as a token of that lie thy soul hath spoken!"
+        "Leave my loneliness unbroken! quit the bust above my door!"
+        "Take thy beak from out my heart, and take thy form from off my door!"
+        "Quoth the raven, Nevermore.  ";
+
+    /* Expected SHA-256 for the message. */
+uint8_t sha256[] = {0x63, 0x76, 0xea, 0xcc, 0xc9, 0xa2, 0xc0, 0x43, 0xf4, 0xfb, 0x01,
+                    0x34, 0x69, 0xb3, 0x0c, 0xf5, 0x28, 0x63, 0x5c, 0xfa, 0xa5, 0x65,
+                    0x60, 0xef, 0x59, 0x7b, 0xd9, 0x1c, 0xac, 0xaa, 0x31, 0xf7};
+
+
+
 int main (void) {
-  plan(2);
+ // plan(2);
 
-  unsigned char buf[32] = {0};
+  unsigned char buf[1024*8] = {0};
 
-  sha256_hash(buf, (unsigned char*)"hello", 5);
+  //sha256_hash(buf, (unsigned char*)"hello", 5);
+#if 0
+void sha256_hash(unsigned char *buf, const unsigned char *data, size_t size)
+{
+  sha256_t hash;
+  sha256_init(&hash);
+  sha256_update(&hash, data, size);
+  sha256_final(&hash, buf);
+}
+#endif
+
+  sha256_t hash;
+  sha256_init(&hash);
+  sha256_update(&hash, (unsigned char*)message, strlen(message));
+  sha256_final(&hash, buf);
+
+//sha256_hash(buf, (unsigned char*)message, strlen(message));
+
+  for(int i=0;i<32;i++)
+	  printf("%2x\n",buf[i]);
+
+
+
+  return 0;
+#if 0
   note("basic stuff");
   ok(memcmp(buf, hello_hashed, 32) == 0, "should hash correctly");
 
@@ -36,4 +79,5 @@ int main (void) {
   ok(memcmp(buf, empty_hashed, 32) == 0, "empty should hash correctly");
 
   done_testing();
+#endif
 }
