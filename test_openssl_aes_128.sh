@@ -2,11 +2,15 @@
 
 iv="000102030405060708090a0b0c0d0e00"
  k="2b7e151628aed2a6abf7158809cf4f"
+ 
+#openssl enc -v -e -nopad -aes-128-cbc -K $k -iv $iv -in t.bin -out et.bin 
+openssl enc -v -d -nopad -aes-128-cbc -K $k -iv $iv -in et.bin -out tt.bin 
 
+#echo -n -e '\x6b\xc1\xbe\xe2\x2e\x40\x9f\x96\xe9\x3d\x7e\x11\x73\x93\x17' > eee.bin 
 
-echo -n -e '\x6b\xc1\xbe\xe2\x2e\x40\x9f\x96\xe9\x3d\x7e\x11\x73\x93\x17\x2a\xfa' \
-	| openssl enc -v -e -aes-128-cbc -K $k\
-	-iv $iv | od -Ax -tx1 
+#echo -n -e '\x6b\xc1\xbe\xe2\x2e\x40\x9f\x96\xe9\x3d\x7e\x11\x73\x93\x17' \
+#	| openssl enc -v -e -aes-128-cbc -K $k\
+#	-iv $iv | od -Ax -tx1 
 
 
 
